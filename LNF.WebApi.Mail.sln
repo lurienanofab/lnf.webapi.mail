@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LNF.WebApi.Mail", "LNF.WebApi.Mail\LNF.WebApi.Mail.csproj", "{FDD68417-87BB-4542-B050-ABE851381C25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LNF.WebApi", "..\lnf\LNF.WebApi\LNF.WebApi.csproj", "{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Staging|Any CPU = Staging|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDD68417-87BB-4542-B050-ABE851381C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD68417-87BB-4542-B050-ABE851381C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD68417-87BB-4542-B050-ABE851381C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD68417-87BB-4542-B050-ABE851381C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD68417-87BB-4542-B050-ABE851381C25}.Staging|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD68417-87BB-4542-B050-ABE851381C25}.Staging|Any CPU.Build.0 = Release|Any CPU
+		{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
+		{85BE7662-47C8-4E82-8090-3F2BD61CC0F7}.Staging|Any CPU.Build.0 = Staging|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {402ED9A7-D040-4666-BE66-CC90B1A2E938}
+	EndGlobalSection
+EndGlobal
