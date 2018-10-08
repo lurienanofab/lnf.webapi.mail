@@ -6,6 +6,8 @@ namespace LNF.WebApi.Mail.Models
     {
         [JsonProperty("result")]
         public bool Result { get; set; }
-        public string Message { get; internal set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 }
