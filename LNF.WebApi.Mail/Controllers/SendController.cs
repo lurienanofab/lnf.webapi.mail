@@ -1,6 +1,4 @@
 ﻿using LNF.WebApi.Mail.Models;
-using System;
-using System.Configuration;
 using System.Net.Mail;
 using System.Web.Http;
 
@@ -41,7 +39,7 @@ namespace LNF.WebApi.Mail.Controllers
                 return result;
             }
 
-            SmtpClient smtp = new SmtpClient(GetSmtpHost(), GetSmtpPort());
+            SmtpClient smtp = MailUtility.GetSmtpClient();
             MailMessage mm = new MailMessage(request.From, request.To, request.Subject, request.Body);
 
             if (!string.IsNullOrEmpty(request.Cc))
@@ -58,26 +56,6 @@ namespace LNF.WebApi.Mail.Controllers
             result.Message = "Message send OK!";
 
             return result;
-        }
-
-        private string GetSmtpHost()
-        {
-            var host = ConfigurationManager.AppSettings["SmtpHost"];
-
-            if (string.IsNullOrEmpty(host))
-                throw new Exception("Missing required AppSetting: SmtpHost");
-
-            return host;
-        }
-
-        private int GetSmtpPort()
-        {
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["SmtpPort"]))
-                return 25;
-
-            int.TryParse(ConfigurationManager.AppSettings["SmtpPort"], out int port);
-
-            return port;
         }
     }
 }
