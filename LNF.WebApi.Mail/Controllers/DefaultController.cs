@@ -12,7 +12,7 @@ namespace LNF.WebApi.Mail.Controllers
         /// <summary>
         /// Gets the API name.
         /// </summary>
-        [Route("")]
+        [AllowAnonymous, Route("")]
         public string Get()
         {
             return "mail-api";
