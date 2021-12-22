@@ -1,50 +1,37 @@
-﻿using LNF.Models.Mail;
+﻿using LNF.Data;
+using LNF.Mail;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
 namespace LNF.WebApi.Mail.Controllers
 {
-    [BasicAuthentication]
-    public class MessageController : ApiController
+    public class MessageController : MailApiController
     {
-        [Route("message")]
-        public string Post([FromBody] SendMessageArgs args)
+        public MessageController(IProvider provider) : base(provider) { }
+
+        [HttpGet, Route("message")]
+        public IEnumerable<IMessage> GetMessages(DateTime sd, DateTime ed, int clientId = 0)
         {
-            // returing any non-empty string means an error occured
-
-            int messageId = Repo.InsertMessage(args.ClientID, args.Caller, args.From, args.Subject, args.Body);
-
-            if (messageId == 0)
-                return "Failed to create message [messageId = 0]";
-
-            Repo.InsertRecipients(messageId, AddressType.To, args.To);
-            Repo.InsertRecipients(messageId, AddressType.Cc, args.Cc);
-            Repo.InsertRecipients(messageId, AddressType.Bcc, args.Bcc);
-
-            try
-            {
-                MailUtility.Send(args);
-                Repo.SetMessageSent(messageId);
-                return string.Empty;
-            }
-            catch (Exception ex)
-            {
-                Repo.SetMessageError(messageId, ex.Message);
-                return ex.ToString();
-            }
+            return Provider.Mail.GetMessages(sd, ed, clientId);
         }
 
-        [Route("message")]
-        public IEnumerable<MessageItem> Get(DateTime sd, DateTime ed, int clientId = 0)
+        [HttpGet, Route("message/{messageId}")]
+        public IMessage GetMessage([FromUri] int messageId)
         {
-            return Repo.SelectMessages(sd, ed, clientId);
+            return Provider.Mail.GetMessage(messageId);
         }
 
-        [Route("message/{messageId}")]
-        public MessageItem Get(int messageId)
+        [HttpGet, Route("message/{messageId}/recipient")]
+        public IEnumerable<IRecipient> GetRecipients([FromUri] int messageId)
         {
-            return Repo.SelectMessage(messageId);
+            return Provider.Mail.GetRecipients(messageId);
+        }
+
+        [HttpGet, Route("message/recipient")]
+        public IEnumerable<string> GetEmailListByPrivilege(ClientPrivilege privs)
+        {
+            return Provider.Mail.GetEmailListByPrivilege(privs);
         }
     }
 }
