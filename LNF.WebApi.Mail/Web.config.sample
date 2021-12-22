@@ -38,6 +38,18 @@
   <system.web>
     <compilation debug="true" targetFramework="4.8"/>
     <httpRuntime targetFramework="4.8"/>
+
+    <authentication mode="Forms">
+      <forms name="xxxxx" path="/" loginUrl="/login" timeout="480" protection="All" slidingExpiration="true" cookieless="UseCookies" domain="xxxxx"/>
+    </authentication>
+
+    <authorization>
+      <deny users="?"/>
+    </authorization>
+
+    <machineKey compatibilityMode="Framework20SP2" validationKey="xxxxx" decryptionKey="xxxxx" validation="SHA1" decryption="3DES"/>
+
+    <customErrors mode="Off"/>
   </system.web>
 
   <system.codedom>

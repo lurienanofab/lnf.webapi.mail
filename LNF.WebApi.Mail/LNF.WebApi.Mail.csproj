@@ -101,7 +101,6 @@
     <Compile Include="Controllers\MailApiController.cs" />
     <Compile Include="Controllers\MassEmailController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="MultiAuthorizeAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\SendController.cs" />

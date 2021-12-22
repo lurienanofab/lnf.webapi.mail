@@ -11,19 +11,20 @@ namespace LNF.WebApi.Mail.Controllers
         public MessageController(IProvider provider) : base(provider) { }
 
         [HttpGet, Route("message")]
-        public IEnumerable<IMessage> GetMessages(DateTime sd, DateTime ed, int clientId = 0)
+        public IEnumerable<Message> GetMessages(DateTime sd, DateTime ed, int clientId = 0)
         {
-            return Provider.Mail.GetMessages(sd, ed, clientId);
+            var result = Provider.Mail.GetMessages(sd, ed, clientId);
+            return result;
         }
 
         [HttpGet, Route("message/{messageId}")]
-        public IMessage GetMessage([FromUri] int messageId)
+        public Message GetMessage([FromUri] int messageId)
         {
             return Provider.Mail.GetMessage(messageId);
         }
 
         [HttpGet, Route("message/{messageId}/recipient")]
-        public IEnumerable<IRecipient> GetRecipients([FromUri] int messageId)
+        public IEnumerable<Recipient> GetRecipients([FromUri] int messageId)
         {
             return Provider.Mail.GetRecipients(messageId);
         }
